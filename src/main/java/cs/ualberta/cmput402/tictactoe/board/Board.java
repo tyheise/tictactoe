@@ -7,20 +7,27 @@ import cs.ualberta.cmput402.tictactoe.board.exceptions.InvalidMoveException;
  */
 public class Board {
 
-    public enum SquareType {EMPTY, X, O};
-    private enum State {PlayerX, PlayerO, Win};
-    private State state;
-    private SquareType board[][];
+    //public enum SquareType {EMPTY, X, O};
+    public enum Player {X, O, NONE};
+    private Player currentPlayer;
+    private Player winner;
+    private Player board[][];
 
     public Board(){
-        board = new SquareType[3][3];
+        board = new Player[3][3];
+        initBoard();
+        winner = null;
+        currentPlayer = Player.X;
     }
 
-    public void play(){
-        
+    private void initBoard(){
+        for (int i = 0; i < 3; i++)
+            for(int j = 0; j < 3; j++)
+                board[i][j] = Player.NONE;
+
     }
 
-    public void playMove(SquareType squareType, int x, int y) throws InvalidMoveException {
+    public void playMove(int x, int y) throws InvalidMoveException {
 
         if(!isSquareAvailable(x, y)){
             //the given coordinates already contain a played move
@@ -33,30 +40,40 @@ public class Board {
             stringBuilder.append(getSymbol(board[x][y]));
             throw new InvalidMoveException(stringBuilder.toString());
         }else{
-            board[x][y] = squareType;
+            board[x][y] = currentPlayer;
 
             if (hasWon(x, y))
-                state = State.Win;
-            else if(state == State.PlayerX)
-                state = State.PlayerO;
-            else if (state == State.PlayerO)
-                state = State.PlayerX;
+                winner = currentPlayer;
+                //state = State.Win;
+            else if(currentPlayer == Player.X)
+                //state = State.PlayerO;
+                currentPlayer = Player.O;
+            else
+            //if (state == State.PlayerO)
+               // state = State.PlayerX;
+                currentPlayer = Player.X;
         }
 
     }
 
+//    public State getState(){
+//        return state;
+//    }
+
     public boolean isSquareAvailable(int x, int y){
-        return (board[x][y] != SquareType.EMPTY);
+        return (board[x][y] != Player.X && board[x][y] != Player.O);
     }
 
-    public String getSymbol(SquareType squareType){
-        switch(squareType){
-            case EMPTY:
-                return "EMPTY";
+    public String getSymbol(Player player){
+        switch(player){
+//            case EMPTY:
+//                return "EMPTY";
             case X:
                 return "X";
             case O:
                 return "O";
+            case NONE:
+                return " ";
             default:
                 return "UNKNOWN SYMBOL";
         }
@@ -86,13 +103,24 @@ public class Board {
     public void printBoard(){
         for(int i  = 0; i < 3; i++){
             for(int j = 0 ; j < 3; j++){
-                System.out.print(getSymbol(board[i][j]));
+
+               System.out.print(getSymbol(board[i][j]));
+
                 if (j == 2)
                     System.out.println("");
                 else
                     System.out.print(" | ");
             }
+            System.out.println("-----");
         }
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public Player getWinner() {
+        return winner;
     }
 
 
