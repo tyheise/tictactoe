@@ -44,5 +44,7 @@ public class TicTacToeGame {
                 promptNextPlayer();
             }
         }
+
+        System.out.println("Player " + board.getWinner() + " has won the game!");
     }
 }
