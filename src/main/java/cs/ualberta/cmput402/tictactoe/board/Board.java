@@ -6,8 +6,7 @@ import cs.ualberta.cmput402.tictactoe.board.exceptions.InvalidMoveException;
  * Created by snadi on 2018-07-16.
  */
 public class Board {
-
-    //public enum SquareType {EMPTY, X, O};
+    
     public enum Player {X, O, NONE};
     private Player currentPlayer;
     private Player winner;
@@ -27,22 +26,22 @@ public class Board {
 
     }
 
-    public void playMove(int x, int y) throws InvalidMoveException {
+    public void playMove(int row, int col) throws InvalidMoveException {
 
-        if(!isSquareAvailable(x, y)){
+        if(!isSquareAvailable(row, col)){
             //the given coordinates already contain a played move
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Invalid Move: Square ");
-            stringBuilder.append(x);
+            stringBuilder.append(row);
             stringBuilder.append(",");
-            stringBuilder.append(y);
+            stringBuilder.append(col);
             stringBuilder.append(" already contains ");
-            stringBuilder.append(getSymbol(board[x][y]));
+            stringBuilder.append(getSymbol(board[row][col]));
             throw new InvalidMoveException(stringBuilder.toString());
         }else{
-            board[x][y] = currentPlayer;
+            board[row][col] = currentPlayer;
 
-            if (hasWon(x, y))
+            if (hasWon(row, col))
                 winner = currentPlayer;
                 //state = State.Win;
             else if(currentPlayer == Player.X)
@@ -56,18 +55,13 @@ public class Board {
 
     }
 
-//    public State getState(){
-//        return state;
-//    }
 
-    public boolean isSquareAvailable(int x, int y){
-        return (board[x][y] != Player.X && board[x][y] != Player.O);
+    public boolean isSquareAvailable(int row, int col){
+        return (board[row][col] != Player.X && board[row][col] != Player.O);
     }
 
     public String getSymbol(Player player){
         switch(player){
-//            case EMPTY:
-//                return "EMPTY";
             case X:
                 return "X";
             case O:
