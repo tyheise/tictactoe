@@ -98,7 +98,7 @@ public class Board {
     }
 
     private boolean isOnLeftDiag(int col, int row){
-        return (col == 0 && row == 2) || (col == 1 && row == 1) || (col == 0 & row == 2);
+        return (col == 0 && row == 2) || (col == 1 && row == 1) || (col == 2 & row == 0);
     }
 
     public void printBoard(){
