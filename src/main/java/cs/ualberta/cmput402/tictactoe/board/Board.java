@@ -6,7 +6,7 @@ import cs.ualberta.cmput402.tictactoe.board.exceptions.InvalidMoveException;
  * Created by snadi on 2018-07-16.
  */
 public class Board {
-    
+
     public enum Player {X, O, NONE};
     private Player currentPlayer;
     private Player winner;
@@ -27,6 +27,9 @@ public class Board {
     }
 
     public void playMove(int row, int col) throws InvalidMoveException {
+
+        if(row < 0 || row >= 3 || col <0 || col >=3)
+            throw new InvalidMoveException("Input coordinates are outside the board. Try again");
 
         if(!isSquareAvailable(row, col)){
             //the given coordinates already contain a played move
@@ -56,7 +59,7 @@ public class Board {
     }
 
 
-    public boolean isSquareAvailable(int row, int col){
+    private boolean isSquareAvailable(int row, int col){
         return (board[row][col] != Player.X && board[row][col] != Player.O);
     }
 
@@ -115,6 +118,10 @@ public class Board {
 
     public Player getWinner() {
         return winner;
+    }
+
+    public Player getPlayerAtPos(int row, int col){
+        return board[row][col];
     }
 
 
