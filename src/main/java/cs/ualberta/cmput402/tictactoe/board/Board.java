@@ -46,13 +46,9 @@ public class Board {
 
             if (hasWon(row, col))
                 winner = currentPlayer;
-                //state = State.Win;
             else if(currentPlayer == Player.X)
-                //state = State.PlayerO;
                 currentPlayer = Player.O;
             else
-            //if (state == State.PlayerO)
-               // state = State.PlayerX;
                 currentPlayer = Player.X;
         }
 
