@@ -25,6 +25,7 @@ public class BoardTest {
         }
 
         assert (board.getCurrentPlayer().equals(Board.Player.X));
+        assert (board.getWinner() == null);
     }
 
     @Test
@@ -98,6 +99,7 @@ public class BoardTest {
         board.playMove(1,0);
         board.playMove(0,0); //player 0
 
+        System.out.println("winner: " + board.getWinner());
         assert(board.getWinner().equals(Board.Player.O));
     }
 

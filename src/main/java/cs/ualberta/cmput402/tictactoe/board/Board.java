@@ -76,25 +76,33 @@ public class Board {
         }
     }
 
-    public boolean hasWon(int lastXPlayed, int lastYPlayed){
+    public boolean hasWon(int lastColPlayed, int lastRowPlayed){
 
-        //check vertical
-        if (board[lastXPlayed][0].equals(board[lastXPlayed][1]) && board[lastXPlayed][1].equals(board[lastXPlayed][2])){
+        //check horizontal
+        if (board[lastColPlayed][0].equals(board[lastColPlayed][1]) && board[lastColPlayed][1].equals(board[lastColPlayed][2])){
             return true;
         }
-        //check horizontal
-        else if(board[0][lastYPlayed].equals(board[1][lastYPlayed]) && board[1][lastYPlayed].equals(board[2][lastYPlayed])){
+        //check vertical
+        else if(board[0][lastRowPlayed].equals(board[1][lastRowPlayed]) && board[1][lastRowPlayed].equals(board[2][lastRowPlayed])){
             return true;
         }
         //check diagonal
         else{
-            if(board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]))
+            if(isOnRightDiag(lastColPlayed, lastRowPlayed) && board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]))
                 return true;
-            else if (board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]))
+            else if (isOnLeftDiag(lastColPlayed, lastRowPlayed) && board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]))
                 return true;
         }
 
         return false;
+    }
+
+    private boolean isOnRightDiag(int col, int row){
+        return (col == 0 && row == 0) || (col == 1 && row == 1) || (col == 2 & row == 2);
+    }
+
+    private boolean isOnLeftDiag(int col, int row){
+        return (col == 0 && row == 2) || (col == 1 && row == 1) || (col == 0 & row == 2);
     }
 
     public void printBoard(){
