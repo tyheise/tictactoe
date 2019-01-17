@@ -128,5 +128,11 @@ public class Board {
         return board[row][col];
     }
 
+    public void resetBoard(){
+        initBoard();
+        winner = null;
+        currentPlayer = Player.X;
+    }
+
 
 }
