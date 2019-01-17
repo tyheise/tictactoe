@@ -44,10 +44,19 @@ public class TicTacToeGame {
                 promptNextPlayer();
             }
         }
-
         board.printBoard();
         System.out.println("Player " + board.getWinner() + " has won the game!");
+
+        // Ask user if they would like to play again
+        System.out.println("Would you like to play again [y/n]?");
+        String line = keyboardScanner.nextLine();
+
+        if(line.toLowerCase().equals("y")){
+            board.resetBoard();
+            playGame();
+        }
     }
+
 
     public static void main(String args[]){
         TicTacToeGame game = new TicTacToeGame();
