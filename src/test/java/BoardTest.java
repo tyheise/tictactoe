@@ -208,4 +208,46 @@ public class BoardTest {
 
         assert(board.isTie() == false);
     }
+
+    @Test
+    public void testThatScoreboardTracksTies() throws InvalidMoveException {
+
+        // A tie game
+        board.playMove(0,0);
+        board.playMove(0,1); //player 0
+        board.playMove(0,2);
+        board.playMove(1,1); //player 0
+        board.playMove(2,1);
+        board.playMove(1,0); //player 0
+        board.playMove(1,2);
+        board.playMove(2,2); //player 0
+        board.playMove(2,0);
+
+        assert(board.getTies() == 1);
+    }
+
+    public void testThatScoreboardTracksNoTieXWin() throws InvalidMoveException {
+
+        // X wins
+        board.playMove(0,1); //player X
+        board.playMove(0,2);
+        board.playMove(1,1); //player X
+        board.playMove(2,2);
+        board.playMove(2,1); //player X
+
+        assert(board.getTies() == 0);
+    }
+
+    public void testThatScoreboardTracksNoTieOWin() throws InvalidMoveException {
+
+        // O wins
+        board.playMove(0,1);
+        board.playMove(2,2); //player 0
+        board.playMove(1,1);
+        board.playMove(1,2); //player 0
+        board.playMove(1,0);
+        board.playMove(0,2); //player 0
+
+        assert(board.getTies() == 0);
+    }
 }
