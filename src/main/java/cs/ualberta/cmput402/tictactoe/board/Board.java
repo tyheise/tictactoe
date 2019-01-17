@@ -13,7 +13,7 @@ public class Board {
     private Player currentPlayer;
     private Player winner;
     private Player board[][];
-    
+
     public int scoreX = 0;
     public int scoreY = 0;
     private boolean tieFlag;
@@ -132,9 +132,9 @@ public class Board {
     }
 
     public void scoreBoard(){
-        
+
         currentPlayer = getWinner();
-        
+
         if (currentPlayer == Player.X){
             scoreX++;
         }
@@ -142,20 +142,20 @@ public class Board {
         if(currentPlayer == Player.O){
             scoreY++;
         }
-        
+
     }
-    
+
     public void printScoreBoard() {
-    	
+
 	  	  System.out.println("Score Board");
 	      System.out.println("----------");
 	      System.out.println("X has won: " + scoreX);
 	      System.out.println("Y has won: " + scoreY);
           System.out.println("Number of ties: " + ties );
-	      System.out.println("----------"); 
-    	
+	      System.out.println("----------");
+
     }
- 
+
 	public Player getCurrentPlayer() {
         return currentPlayer;
     }
@@ -166,6 +166,13 @@ public class Board {
 
     public Player getPlayerAtPos(int row, int col){
         return board[row][col];
+    }
+
+    public void resetBoard(){
+        initBoard();
+        winner = null;
+        currentPlayer = Player.X;
+        tieFlag = false;
     }
 
     public boolean isTie() {
