@@ -134,9 +134,10 @@ public class Board {
         }
         
         for(int i = 0; i < score.size(); i++) {
-        	if(score.get(i) == 'X') {
+        	if(score.get(i).equals('X')) {
         		scoreX++;
-        	}else if (score.get(i) == 'Y'){
+        	}
+        	if (score.get(i).equals('O')){
         		scoreY++;
         	}
         }
