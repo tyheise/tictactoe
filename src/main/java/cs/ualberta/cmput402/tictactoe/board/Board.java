@@ -14,6 +14,7 @@ public class Board {
     private Player winner;
     private Player board[][];
     
+    public ArrayList<Character> score = new ArrayList<Character>();
     public int scoreX = 0;
     public int scoreY = 0;
     private boolean tieFlag;
@@ -136,21 +137,31 @@ public class Board {
         currentPlayer = getWinner();
         
         if (currentPlayer == Player.X){
-            scoreX++;
+            score.add('X');
         }
 
         if(currentPlayer == Player.O){
-            scoreY++;
+            score.add('O');
         }
         
+        
+        for(int i = 0; i < score.size(); i++) {
+        	if(score.get(i).equals('X')) {
+        		scoreX++;
+        	}
+        	if (score.get(i).equals('O')){
+        		scoreY++;
+        	}
+        }
+       
     }
     
     public void printScoreBoard() {
     	
 	  	  System.out.println("Score Board");
 	      System.out.println("----------");
-	      System.out.println("X has won: " + scoreX);
-	      System.out.println("Y has won: " + scoreY);
+	      System.out.println("X has won: " + scoreX + "/" + score.size() );
+	      System.out.println("Y has won: " + scoreY + "/" + score.size() );
           System.out.println("Number of ties: " + ties );
 	      System.out.println("----------"); 
     	
