@@ -16,12 +16,14 @@ public class Board {
     public ArrayList<Character> score = new ArrayList<Character>();
     public int scoreX = 0;
     public int scoreY = 0;
+    private boolean tieFlag;
 
     public Board(){
         board = new Player[3][3];
         initBoard();
         winner = null;
         currentPlayer = Player.X;
+        tieFlag = false;
     }
 
     private void initBoard(){
@@ -55,6 +57,8 @@ public class Board {
                 currentPlayer = Player.O;
             else
                 currentPlayer = Player.X;
+
+            tieFlag = checkTie();
         }
 
     }
@@ -160,5 +164,18 @@ public class Board {
         return board[row][col];
     }
 
+    public boolean isTie() {
+        return this.tieFlag;
+    }
 
+    private boolean checkTie() {
+        for (int i = 0; i < 3; i++)  {
+            for(int j = 0; j < 3; j++) {
+                if (board[i][j] == Player.NONE) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

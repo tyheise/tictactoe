@@ -177,4 +177,19 @@ public class BoardTest {
         assert(board.getWinner().equals(Board.Player.O));
     }
 
+    @Test
+    public void testTieGame() throws InvalidMoveException {
+
+        board.playMove(0,0);
+        board.playMove(0,1); //player 0
+        board.playMove(0,2);
+        board.playMove(1,1); //player 0
+        board.playMove(2,1);
+        board.playMove(1,0); //player 0
+        board.playMove(1,2);
+        board.playMove(2,0); //player 0
+        board.playMove(2,2);
+
+        assert(board.isTie() == true);
+    }
 }
