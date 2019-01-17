@@ -31,29 +31,33 @@ public class TicTacToeGame {
 
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
-
-        while (board.getWinner() == null){
-            board.printBoard();
-            promptNextPlayer();
-            String line = keyboardScanner.nextLine();
-            String input[] = line.split(",");
-            try {
-                board.playMove(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
-            } catch (InvalidMoveException e) {
-                System.out.println("Invalid coordinates. Try again");
+        while (true){
+            while (board.getWinner() == null){
+                board.printBoard();
                 promptNextPlayer();
+                String line = keyboardScanner.nextLine();
+                String input[] = line.split(",");
+                try {
+                    board.playMove(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
+                } catch (InvalidMoveException e) {
+                    System.out.println("Invalid coordinates. Try again");
+                    promptNextPlayer();
+                }
             }
-        }
-        board.printBoard();
-        System.out.println("Player " + board.getWinner() + " has won the game!");
 
-        // Ask user if they would like to play again
-        System.out.println("Would you like to play again [y/n]?");
-        String line = keyboardScanner.nextLine();
+            board.printBoard();
+            System.out.println("Player " + board.getWinner() + " has won the game!");
 
-        if(line.toLowerCase().equals("y")){
-            board.resetBoard();
-            playGame();
+            // Ask user if they would like to play again
+            System.out.println("Would you like to play again [y/n]?");
+            String line = keyboardScanner.nextLine();
+
+            if(line.toLowerCase().equals("y")){
+                board.resetBoard();
+            }
+            else {
+                break;
+            }
         }
     }
 
