@@ -1,6 +1,8 @@
 package cs.ualberta.cmput402.tictactoe.board;
 
 import cs.ualberta.cmput402.tictactoe.board.exceptions.InvalidMoveException;
+import java.util.ArrayList;
+
 
 /**
  * Created by snadi on 2018-07-16.
@@ -11,6 +13,9 @@ public class Board {
     private Player currentPlayer;
     private Player winner;
     private Player board[][];
+    public ArrayList<Character> score = new ArrayList<Character>();
+    public int scoreX = 0;
+    public int scoreY = 0;
 
     public Board(){
         board = new Player[3][3];
@@ -116,7 +121,34 @@ public class Board {
         }
     }
 
-    public Player getCurrentPlayer() {
+    public void scoreBoard(){
+        
+        currentPlayer = getWinner();
+        
+        if (currentPlayer == Player.X){
+            score.add('X');
+        }
+
+        if(currentPlayer == Player.O){
+            score.add('O');
+        }
+        
+        for(int i = 0; i < score.size(); i++) {
+        	if(score.get(i).equals('X')) {
+        		scoreX++;
+        	}
+        	if (score.get(i).equals('O')){
+        		scoreY++;
+        	}
+        }
+        System.out.println("Score Board");
+        System.out.println("----------");
+        System.out.println("X has won: " + scoreX + "/" + score.size() );
+        System.out.println("Y has won: " + scoreY + "/" + score.size() );
+        System.out.println("----------");
+    }
+
+	public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
