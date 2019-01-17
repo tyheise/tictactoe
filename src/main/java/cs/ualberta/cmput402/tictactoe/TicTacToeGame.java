@@ -31,23 +31,27 @@ public class TicTacToeGame {
 
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
+        	
+        	
+        	
+	        while (board.getWinner() == null){
+	            board.printBoard();
+	            promptNextPlayer();
+	            String line = keyboardScanner.nextLine();
+	            String input[] = line.split(",");
+	            try {
+	                board.playMove(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
+	            } catch (InvalidMoveException e) {
+	                System.out.println("Invalid coordinates. Try again");
+	                promptNextPlayer();
+	            }
+	        }
+	
+	        board.printBoard();
+	        System.out.println("Player " + board.getWinner() + " has won the game!");
+	        board.scoreBoard();
+	        board.printScoreBoard();
 
-        while (board.getWinner() == null){
-            board.printBoard();
-            promptNextPlayer();
-            String line = keyboardScanner.nextLine();
-            String input[] = line.split(",");
-            try {
-                board.playMove(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
-            } catch (InvalidMoveException e) {
-                System.out.println("Invalid coordinates. Try again");
-                promptNextPlayer();
-            }
-        }
-
-        board.printBoard();
-        System.out.println("Player " + board.getWinner() + " has won the game!");
-        board.scoreBoard();
     }
 
     public static void main(String args[]){
