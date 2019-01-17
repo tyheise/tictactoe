@@ -18,6 +18,7 @@ public class Board {
     public int scoreX = 0;
     public int scoreY = 0;
     private boolean tieFlag;
+    private int ties;
 
     public Board(){
         board = new Player[3][3];
@@ -25,6 +26,7 @@ public class Board {
         winner = null;
         currentPlayer = Player.X;
         tieFlag = false;
+        ties = 0;
     }
 
     private void initBoard(){
@@ -56,6 +58,7 @@ public class Board {
                 winner = currentPlayer;
             else if (checkTie()) {
                 tieFlag = checkTie();
+                incrementTies();
             }
             else if(currentPlayer == Player.X)
                 currentPlayer = Player.O;
@@ -159,6 +162,7 @@ public class Board {
 	      System.out.println("----------");
 	      System.out.println("X has won: " + scoreX + "/" + score.size() );
 	      System.out.println("Y has won: " + scoreY + "/" + score.size() );
+          System.out.println("Number of ties: " + ties );
 	      System.out.println("----------"); 
     	
     }
@@ -188,5 +192,13 @@ public class Board {
             }
         }
         return true;
+    }
+
+    private void incrementTies() {
+        this.ties = this.ties + 1;
+    }
+
+    public int getTies() {
+        return this.ties;
     }
 }
