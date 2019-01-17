@@ -55,6 +55,7 @@ public class TicTacToeGame {
         }
 
         board.scoreBoard();
+        board.printScoreBoard();
     }
 
     public static void main(String args[]){

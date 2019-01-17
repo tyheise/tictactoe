@@ -13,6 +13,7 @@ public class Board {
     private Player currentPlayer;
     private Player winner;
     private Player board[][];
+    
     public ArrayList<Character> score = new ArrayList<Character>();
     public int scoreX = 0;
     public int scoreY = 0;
@@ -137,6 +138,7 @@ public class Board {
             score.add('O');
         }
         
+        
         for(int i = 0; i < score.size(); i++) {
         	if(score.get(i).equals('X')) {
         		scoreX++;
@@ -145,13 +147,19 @@ public class Board {
         		scoreY++;
         	}
         }
-        System.out.println("Score Board");
-        System.out.println("----------");
-        System.out.println("X has won: " + scoreX + "/" + score.size() );
-        System.out.println("Y has won: " + scoreY + "/" + score.size() );
-        System.out.println("----------");
+       
     }
-
+    
+    public void printScoreBoard() {
+    	
+	  	  System.out.println("Score Board");
+	      System.out.println("----------");
+	      System.out.println("X has won: " + scoreX + "/" + score.size() );
+	      System.out.println("Y has won: " + scoreY + "/" + score.size() );
+	      System.out.println("----------"); 
+    	
+    }
+ 
 	public Player getCurrentPlayer() {
         return currentPlayer;
     }
