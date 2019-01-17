@@ -32,7 +32,7 @@ public class TicTacToeGame {
     public void playGame(){
         Scanner keyboardScanner = new Scanner(System.in);
         while (true){
-            while (board.getWinner() == null){
+            while (board.getWinner() == null && !(board.isTie())){
                 board.printBoard();
                 promptNextPlayer();
                 String line = keyboardScanner.nextLine();
@@ -46,7 +46,14 @@ public class TicTacToeGame {
             }
 
             board.printBoard();
-            System.out.println("Player " + board.getWinner() + " has won the game!");
+            board.scoreBoard();
+
+            if (board.isTie()) {
+                System.out.println("Tie game!");
+            }
+            else {
+                System.out.println("Player " + board.getWinner() + " has won the game!");
+            }
 
             // Ask user if they would like to play again
             System.out.println("Would you like to play again [y/n]?");
@@ -56,9 +63,11 @@ public class TicTacToeGame {
                 board.resetBoard();
             }
             else {
+                board.printScoreBoard();
                 break;
             }
         }
+        
     }
 
 
