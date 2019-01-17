@@ -172,6 +172,7 @@ public class Board {
         initBoard();
         winner = null;
         currentPlayer = Player.X;
+        tieFlag = false;
     }
 
     public boolean isTie() {
