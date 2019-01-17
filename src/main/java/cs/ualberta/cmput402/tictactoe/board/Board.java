@@ -54,12 +54,15 @@ public class Board {
 
             if (hasWon(row, col))
                 winner = currentPlayer;
+            else if (checkTie()) {
+                tieFlag = checkTie();
+            }
             else if(currentPlayer == Player.X)
                 currentPlayer = Player.O;
             else
                 currentPlayer = Player.X;
 
-            tieFlag = checkTie();
+
         }
 
     }
