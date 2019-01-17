@@ -57,6 +57,8 @@ public class Board {
                 currentPlayer = Player.O;
             else
                 currentPlayer = Player.X;
+
+            tieFlag = checkTie();
         }
 
     }
@@ -166,4 +168,14 @@ public class Board {
         return this.tieFlag;
     }
 
+    private boolean checkTie() {
+        for (int i = 0; i < 3; i++)  {
+            for(int j = 0; j < 3; j++) {
+                if (board[i][j] == Player.NONE) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
