@@ -46,7 +46,7 @@ public class TicTacToeGame {
             }
 
             board.printBoard();
-            board.scoreBoard();
+            board.updateScore();
 
             if (board.isTie()) {
                 System.out.println("Tie game!");

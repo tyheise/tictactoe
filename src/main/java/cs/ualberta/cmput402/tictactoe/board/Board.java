@@ -15,7 +15,7 @@ public class Board {
     private Player board[][];
 
     public int scoreX = 0;
-    public int scoreY = 0;
+    public int scoreO  = 0;
     private boolean tieFlag;
     private int ties;
 
@@ -131,7 +131,7 @@ public class Board {
         }
     }
 
-    public void scoreBoard(){
+    public void updateScore(){
 
         currentPlayer = getWinner();
 
