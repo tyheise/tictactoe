@@ -140,7 +140,7 @@ public class Board {
         }
 
         if(currentPlayer == Player.O){
-            scoreY++;
+            scoreO++;
         }
 
     }
@@ -149,8 +149,8 @@ public class Board {
 
 	  	  System.out.println("Score Board");
 	      System.out.println("----------");
-	      System.out.println("X has won: " + scoreX + " times, and lost: " + scoreY + " times");
-	      System.out.println("O has won: " + scoreY + " times, and lost: " + scoreX + " times");
+	      System.out.println("X has won: " + scoreX + " times, and lost: " + scoreO + " times");
+	      System.out.println("O has won: " + scoreO + " times, and lost: " + scoreX + " times");
           System.out.println("Number of ties: " + ties );
 	      System.out.println("----------");
 
