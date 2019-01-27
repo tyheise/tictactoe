@@ -39,7 +39,7 @@ public class TicTacToeGame {
                 String input[] = line.split(",");
                 try {
                     board.playMove(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
-                } catch (InvalidMoveException e) {
+                } catch (InvalidMoveException e){
                     System.out.println("Invalid coordinates. Try again");
                     promptNextPlayer();
                 }
@@ -48,7 +48,7 @@ public class TicTacToeGame {
             board.printBoard();
             board.updateScore();
 
-            if (board.isTie()) {
+            if (board.isTie()){
                 System.out.println("Tie game!");
             }
             else {
@@ -59,7 +59,7 @@ public class TicTacToeGame {
             System.out.println("Would you like to play again [y/n]?");
             String line = keyboardScanner.nextLine();
 
-            if(line.toLowerCase().equals("y")){
+            if(line.equalsIgnoreCase("y")){
                 board.resetBoard();
             }
             else {
@@ -67,7 +67,7 @@ public class TicTacToeGame {
                 break;
             }
         }
-        
+
     }
 
 
