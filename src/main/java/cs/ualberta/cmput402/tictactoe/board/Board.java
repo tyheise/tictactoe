@@ -57,7 +57,7 @@ public class Board {
                 winner = currentPlayer;
             else if (checkTie()) {
                 tieFlag = checkTie();
-                incrementTies();
+                setTies(getTies() + 1);
             }
             else if(currentPlayer == Player.X)
                 currentPlayer = Player.O;
@@ -190,11 +190,11 @@ public class Board {
         return true;
     }
 
-    private void incrementTies() {
-        this.ties = this.ties + 1;
-    }
-
     public int getTies() {
         return this.ties;
+    }
+
+    public void setTies(int ties) {
+        this.ties = ties;
     }
 }
