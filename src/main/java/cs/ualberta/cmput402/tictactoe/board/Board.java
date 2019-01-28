@@ -146,14 +146,12 @@ public class Board {
     }
 
     public void printScoreBoard() {
-
-	  	  System.out.println("Score Board");
-	      System.out.println("----------");
-	      System.out.println("X has won: " + scoreX + " times, and lost: " + scoreO + " times");
-	      System.out.println("O has won: " + scoreO + " times, and lost: " + scoreX + " times");
-          System.out.println("Number of ties: " + ties );
-	      System.out.println("----------");
-
+        System.out.println("Score Board");
+        System.out.println("----------");
+        System.out.println("X has won: " + scoreX + " times, and lost: " + scoreO + " times");
+        System.out.println("O has won: " + scoreO + " times, and lost: " + scoreX + " times");
+        System.out.println("Number of ties: " + ties );
+        System.out.println("----------");
     }
 
 	public Player getCurrentPlayer() {
